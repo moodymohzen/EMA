@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMA SOFT – Software Solutions</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Logo without BG.png">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1b2a4a;
+            --accent: #f7b500;
+            --page-bg: #050814;
+            --surface: #0b1022;
+            --surface-raised: #111a30;
+            --text: #ffffff;
+            --text-muted: #b0b7c3;
+            --border: rgba(247, 181, 0, 0.18);
+            --nav-bg: rgba(5, 8, 20, 0.95);
+            --hero-start: #1b2a4a;
+            --hero-end: #050814;
+        }
+
+        :root[data-theme="light"] {
+            --page-bg: #f5f7fb;
+            --surface: #ffffff;
+            --surface-raised: #eaf0fa;
+            --text: #172033;
+            --text-muted: #596579;
+            --border: rgba(27, 42, 74, 0.14);
+            --nav-bg: rgba(255, 255, 255, 0.96);
+            --hero-start: #e4ecfa;
+            --hero-end: #f5f7fb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--page-bg);
+            color: var(--text);
+            transition: background-color .25s ease, color .25s ease;
+        }
+
+        html[lang="ar"] body {
+            font-family: Tahoma, Arial, sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            background: var(--nav-bg);
+            position: sticky;
+            top: 0;
+            z-index: 9000;
+            gap: 20px;
+            transition: background-color .25s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo span {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            position: relative;
+            font-size: 14px;
+            color: var(--text-muted);
+            transition: color .2s ease;
+        }
+
+        .nav-links a::after {
+            position: absolute;
+            right: 0;
+            bottom: -5px;
+            left: 0;
+            height: 2px;
+            background: var(--accent);
+            content: "";
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform .25s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .utility-button {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: var(--surface);
+            color: var(--text);
+            font: inherit;
+            font-size: 12px;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .utility-button:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            padding: 8px 18px;
+            border-radius: 20px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 13px;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 80px 8% 60px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 38px;
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+
+        .hero-text h1 .accent-text {
+            color: var(--accent);
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            font-size: 15px;
+            max-width: 480px;
+            margin-bottom: 25px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #000;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: transform .2s ease, background-color .2s ease;
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover,
+        .nav-cta:hover {
+            transform: translateY(-3px);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 8px 22px rgba(247, 181, 0, .24);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(247, 181, 0, .1);
+        }
+
+        .hero-badge {
+            margin-top: 20px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .hero-visual {
+            background: radial-gradient(circle at top, var(--hero-start) 0, var(--hero-end) 75%);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid var(--border);
+            perspective: 900px;
+            overflow: hidden;
+        }
+
+        .logo-stage {
+            position: relative;
+            display: grid;
+            min-height: 220px;
+            place-items: center;
+            isolation: isolate;
+            transform-style: preserve-3d;
+            animation: logo-stage-float 6s ease-in-out infinite;
+        }
+
+        .logo-stage::before {
+            position: absolute;
+            z-index: -2;
+            width: min(72%, 245px);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(247, 181, 0, .2), rgba(27, 42, 74, .16) 48%, transparent 72%);
+            filter: blur(4px);
+            content: "";
+            transform: translateZ(-35px);
+            animation: logo-aura 4.5s ease-in-out infinite;
+        }
+
+        .logo-orbit {
+            position: absolute;
+            z-index: -1;
+            width: min(86%, 290px);
+            height: 132px;
+            border: 1px solid rgba(247, 181, 0, .38);
+            border-radius: 50%;
+            pointer-events: none;
+            transform-style: preserve-3d;
+        }
+
+        .logo-orbit::before,
+        .logo-orbit::after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            content: "";
+            transform: translate(-50%, -50%);
+        }
+
+        .logo-orbit::before {
+            background: var(--accent);
+            box-shadow: 0 0 14px rgba(247, 181, 0, .9);
+        }
+
+        .logo-orbit::after {
+            width: 6px;
+            height: 6px;
+            background: #43b5ff;
+            box-shadow: 0 0 12px rgba(67, 181, 255, .85);
+        }
+
+        .logo-orbit-one {
+            animation: logo-orbit-one 8s linear infinite;
+        }
+
+        .logo-orbit-one::before {
+            top: 50%;
+            left: 0;
+        }
+
+        .logo-orbit-one::after {
+            top: 50%;
+            right: 0;
+            left: auto;
+        }
+
+        .logo-orbit-two {
+            width: min(76%, 260px);
+            height: 158px;
+            border-color: rgba(67, 181, 255, .27);
+            transform: rotateX(67deg) rotateZ(-24deg);
+            animation: logo-orbit-two 10s linear infinite;
+        }
+
+        .logo-orbit-two::before {
+            top: 15%;
+            left: 17%;
+            width: 6px;
+            height: 6px;
+            background: #fff;
+            box-shadow: 0 0 12px rgba(255, 255, 255, .8);
+        }
+
+        .logo-orbit-two::after {
+            top: 82%;
+            right: 15%;
+            left: auto;
+            width: 5px;
+            height: 5px;
+            background: var(--accent);
+        }
+
+        .logo-stage .logo-mark {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 260px;
+            display: block;
+            margin: 0 auto 15px;
+            filter: drop-shadow(0 18px 12px rgba(0, 0, 0, .34));
+            transform: translateZ(38px) rotateX(5deg) rotateY(-8deg);
+            animation: logo-mark-3d 5s ease-in-out infinite;
+            will-change: transform, filter;
+        }
+
+        .logo-spark {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 12px rgba(247, 181, 0, .9);
+            pointer-events: none;
+        }
+
+        .logo-spark-one {
+            top: 22%;
+            left: 18%;
+            animation: logo-spark 3.2s ease-in-out infinite;
+        }
+
+        .logo-spark-two {
+            top: 72%;
+            right: 17%;
+            width: 4px;
+            height: 4px;
+            background: #43b5ff;
+            box-shadow: 0 0 12px rgba(67, 181, 255, .85);
+            animation: logo-spark 3.8s ease-in-out -1.4s infinite;
+        }
+
+        .logo-spark-three {
+            top: 18%;
+            right: 24%;
+            width: 3px;
+            height: 3px;
+            background: #fff;
+            animation: logo-spark 4s ease-in-out -2s infinite;
+        }
+
+        @keyframes logo-stage-float {
+            0%, 100% { transform: rotateX(0deg) rotateY(0deg) translateY(0); }
+            50% { transform: rotateX(2deg) rotateY(-3deg) translateY(-5px); }
+        }
+
+        @keyframes logo-mark-3d {
+            0%, 100% { transform: translateZ(38px) rotateX(5deg) rotateY(-8deg); }
+            50% { transform: translateZ(58px) rotateX(-2deg) rotateY(8deg); }
+        }
+
+        @keyframes logo-orbit-one {
+            from { transform: rotateX(68deg) rotateZ(0deg); }
+            to { transform: rotateX(68deg) rotateZ(360deg); }
+        }
+
+        @keyframes logo-orbit-two {
+            from { transform: rotateX(67deg) rotateZ(-24deg); }
+            to { transform: rotateX(67deg) rotateZ(336deg); }
+        }
+
+        @keyframes logo-aura {
+            0%, 100% { opacity: .55; transform: translateZ(-35px) scale(.9); }
+            50% { opacity: 1; transform: translateZ(-35px) scale(1.08); }
+        }
+
+        @keyframes logo-spark {
+            0%, 100% { opacity: .25; transform: translate3d(0, 5px, 0) scale(.7); }
+            50% { opacity: 1; transform: translate3d(0, -9px, 20px) scale(1.35); }
+        }
+
+        .hero-visual .tagline {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Section */
+        .section {
+            padding: 40px 8%;
+        }
+
+        .section-header {
+            margin-bottom: 25px;
+        }
+
+        .section-header h2 {
+            font-size: 24px;
+        }
+
+        .section-header p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: var(--surface);
+            border-radius: 14px;
+            padding: 18px;
+            border: 1px solid var(--border);
+            transition: transform .2s ease, box-shadow .2s ease, border .2s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border-color: var(--accent);
+        }
+
+        .service-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: rgba(247, 181, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 18px;
+            transition: transform .25s ease, background-color .25s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: rotate(-8deg) scale(1.12);
+            background: rgba(247, 181, 0, .18);
+        }
+
+        .service-title {
+            font-size: 15px;
+            margin-bottom: 6px;
+        }
+
+        .service-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            position: relative;
+            background: var(--surface);
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 16px 34px rgba(0, 0, 0, .24);
+        }
+
+        .project-thumb {
+            height: 130px;
+            background: linear-gradient(135deg, var(--hero-start), var(--hero-end));
+            background-size: 160% 160%;
+            transition: background-position .5s ease, transform .5s ease;
+        }
+
+        .project-card:hover .project-thumb {
+            background-position: 100% 100%;
+            transform: scale(1.04);
+        }
+
+        .project-content {
+            padding: 14px;
+        }
+
+        .project-title {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .project-tag {
+            font-size: 11px;
+            color: var(--accent);
+        }
+
+        /* About */
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 30px;
+        }
+
+        .about-text p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .about-highlight {
+            font-size: 13px;
+            color: var(--accent);
+        }
+
+        .about-box {
+            background: var(--surface);
+            border-radius: 14px;
+            padding: 18px;
+            border: 1px solid var(--border);
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 20px 8%;
+            border-top: 1px solid var(--border);
+            font-size: 12px;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-links a {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity .7s ease var(--reveal-delay, 0ms), transform .7s cubic-bezier(.2, .7, .2, 1) var(--reveal-delay, 0ms);
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card.reveal,
+        .project-card.reveal {
+            transition: opacity .65s ease var(--reveal-delay, 0ms), transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+        }
+
+        .service-card.reveal:not(.is-visible),
+        .project-card.reveal:not(.is-visible) {
+            transform: translateY(24px);
+        }
+
+        .service-card.reveal.is-visible:hover,
+        .project-card.reveal.is-visible:hover {
+            transform: translateY(-7px);
+        }
+
+        .about-box ul {
+            padding-inline-start: 20px;
+        }
+
+        .about-box li {
+            margin-bottom: 5px;
+        }
+
+        /* WhatsApp Floating Button Styles (من كودك) */
+        .whatsapp-container {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 9999;
+        }
+
+        .whatsapp-button {
+            position: relative;
+            display: grid;
+            width: 54px;
+            height: 54px;
+            place-items: center;
+            border: 0;
+            border-radius: 50%;
+            background: #20cf68;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 0 0 11px rgba(32, 207, 104, 0.09), 0 4px 10px rgba(0, 0, 0, 0.16);
+            animation: whatsapp-bob 3.4s ease-in-out infinite;
+            isolation: isolate;
+        }
+
+        .whatsapp-button::before {
+            position: absolute;
+            z-index: -1;
+            inset: -5px;
+            border: 2px solid rgba(32, 207, 104, .45);
+            border-radius: 50%;
+            content: "";
+            animation: whatsapp-pulse 2.8s ease-out infinite;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.05);
+            animation-play-state: paused;
+            box-shadow: 0 0 0 11px rgba(32, 207, 104, 0.14), 0 4px 10px rgba(0, 0, 0, 0.16);
+        }
+
+        .whatsapp-button svg {
+            width: 34px;
+            height: 34px;
+            fill: currentColor;
+        }
+
+        .whatsapp-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            display: grid;
+            width: 21px;
+            height: 21px;
+            place-items: center;
+            border: 2px solid var(--page-bg);
+            border-radius: 50%;
+            background: #ef3340;
+            color: #fff;
+            font: 700 11px/1 Arial, sans-serif;
+            box-shadow: 0 2px 7px rgba(0, 0, 0, .3);
+            animation: badge-pop .5s cubic-bezier(.2, 1.5, .5, 1) 1.2s both, badge-pulse 2.4s ease-in-out 1.7s infinite;
+        }
+
+        .whatsapp-badge[hidden] {
+            display: none;
+        }
+
+        .whatsapp-button.is-open,
+        .whatsapp-button.is-open::before {
+            animation: none;
+        }
+
+        .whatsapp-notice {
+            position: absolute;
+            bottom: 72px;
+            left: 0;
+            display: flex;
+            width: 250px;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 13px 15px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--surface);
+            color: var(--text);
+            text-align: start;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, .24);
+            cursor: pointer;
+            animation: notice-arrive .55s cubic-bezier(.2, .8, .2, 1) 2s both;
+        }
+
+        .whatsapp-notice::after {
+            position: absolute;
+            bottom: -7px;
+            inset-inline-start: 19px;
+            width: 12px;
+            height: 12px;
+            border-right: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: var(--surface);
+            content: "";
+            transform: rotate(45deg);
+        }
+
+        .whatsapp-notice[hidden] {
+            display: none;
+        }
+
+        .notice-dot {
+            width: 9px;
+            height: 9px;
+            flex: 0 0 9px;
+            margin-top: 5px;
+            border-radius: 50%;
+            background: #20cf68;
+            box-shadow: 0 0 0 4px rgba(32, 207, 104, .12);
+        }
+
+        .notice-copy {
+            display: grid;
+            gap: 4px;
+        }
+
+        .notice-copy strong {
+            font-size: 13px;
+        }
+
+        .notice-copy span {
+            color: var(--text-muted);
+            font-size: 12px;
+            line-height: 1.45;
+        }
+
+        .whatsapp-notice:hover {
+            border-color: #20cf68;
+            transform: translateY(-2px);
+        }
+
+        @keyframes whatsapp-bob {
+            0%, 88%, 100% { transform: translateY(0); }
+            92% { transform: translateY(-5px) rotate(-5deg); }
+            96% { transform: translateY(0) rotate(4deg); }
+        }
+
+        @keyframes whatsapp-pulse {
+            0% { opacity: .7; transform: scale(.94); }
+            75%, 100% { opacity: 0; transform: scale(1.35); }
+        }
+
+        @keyframes badge-pop {
+            from { opacity: 0; transform: scale(0); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes badge-pulse {
+            0%, 100% { box-shadow: 0 2px 7px rgba(0, 0, 0, .3); }
+            50% { box-shadow: 0 0 0 4px rgba(239, 51, 64, .2), 0 2px 7px rgba(0, 0, 0, .3); }
+        }
+
+        @keyframes notice-arrive {
+            from { opacity: 0; transform: translateY(12px) scale(.96); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .whatsapp-chat {
+            position: absolute;
+            bottom: 76px;
+            left: 0;
+            display: block;
+            width: 340px;
+            max-width: calc(100vw - 32px);
+            overflow: hidden;
+            background: #f4f1eb;
+            border-radius: 18px;
+            box-shadow: 0 5px 22px rgba(0, 0, 0, 0.2);
+            transform-origin: bottom left;
+            animation: fadeIn .25s ease;
+        }
+
+        :root[data-theme="light"] .hero-visual {
+            box-shadow: 0 12px 35px rgba(27, 42, 74, .08);
+        }
+
+        .whatsapp-chat[hidden] {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px) scale(.98); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-height: 68px;
+            padding: 10px 14px;
+            background: #075e54;
+            color: #fff;
+        }
+
+        .chat-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: contain;
+            background: #fff;
+            padding: 5px;
+        }
+
+        .chat-heading {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .chat-heading h4 {
+            margin: 0 0 4px;
+            font-size: 15px;
+        }
+
+        .chat-heading span {
+            font-size: 12px;
+            opacity: .9;
+        }
+
+        .chat-close {
+            display: grid;
+            width: 34px;
+            height: 34px;
+            place-items: center;
+            border: 0;
+            border-radius: 50%;
+            background: transparent;
+            color: #fff;
+            font-size: 25px;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .chat-close:hover {
+            background: rgba(255, 255, 255, .14);
+        }
+
+        .chat-body {
+            min-height: 112px;
+            padding: 14px 16px;
+            background-color: #eee9e0;
+            background-image: radial-gradient(rgba(7, 94, 84, .07) 1px, transparent 1px);
+            background-size: 13px 13px;
+        }
+
+        .chat-message {
+            max-width: 82%;
+            margin-left: auto;
+            padding: 11px 13px 8px;
+            border-radius: 12px 3px 12px 12px;
+            background: #fff;
+            color: #333;
+            font-size: 14px;
+            line-height: 1.55;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, .08);
+        }
+
+        .chat-message strong {
+            display: block;
+            margin-bottom: 3px;
+            color: #777;
+            font-size: 12px;
+        }
+
+        .chat-time {
+            display: block;
+            margin-top: 4px;
+            color: #999;
+            font-size: 10px;
+            text-align: right;
+        }
+
+        .chat-compose {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 12px;
+            background: #f6f6f6;
+        }
+
+        .chat-compose input {
+            flex: 1;
+            min-width: 0;
+            height: 42px;
+            padding: 0 14px;
+            border: 0;
+            border-radius: 24px;
+            outline: none;
+            background: #fff;
+            color: #333;
+            font: inherit;
+            font-size: 13px;
+        }
+
+        .chat-compose input:focus {
+            box-shadow: 0 0 0 2px rgba(7, 94, 84, .18);
+        }
+
+        .chat-send {
+            display: grid;
+            width: 38px;
+            height: 38px;
+            flex: 0 0 38px;
+            place-items: center;
+            border: 0;
+            border-radius: 50%;
+            background: #075e54;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .chat-send svg {
+            width: 19px;
+            height: 19px;
+            fill: currentColor;
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            .about-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: .01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: .01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .navbar {
+                flex-wrap: wrap;
+                padding: 14px 5%;
+            }
+
+            .nav-links {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .nav-controls {
+                margin-inline-start: auto;
+            }
+
+            .utility-button {
+                padding: 7px 9px;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .navbar {
+                gap: 12px;
+            }
+
+            .logo img {
+                height: 32px;
+            }
+
+            .nav-links {
+                gap: 14px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .whatsapp-container {
+                left: 16px;
+                bottom: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <img src="Logo without BG.png" alt="EMA SOFT" data-i18n-attr="alt:brandName">
+            <span data-i18n="brandName">EMA SOFT</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#services" data-i18n="navServices">Services</a>
+            <a href="#portfolio" data-i18n="navPortfolio">Portfolio</a>
+            <a href="#about" data-i18n="navAbout">About</a>
+        </nav>
+        <div class="nav-controls">
+            <button class="utility-button" id="languageToggle" type="button" aria-label="Switch language">عربي</button>
+            <button class="utility-button" id="themeToggle" type="button" aria-label="Switch color theme"><span aria-hidden="true">☀️</span> <span data-i18n="lightMode">Light mode</span></button>
+        </div>
+        <a href="#contact" class="nav-cta" data-i18n="navContact">Get in touch</a>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1><span data-i18n="heroLead">We build</span> <span class="accent-text" data-i18n="heroEmphasis">smart software</span><br><span data-i18n="heroTail">for growing businesses.</span></h1>
+            <p data-i18n="heroDescription">
+                EMA SOFT delivers modern web, mobile, and cloud solutions tailored to your business needs, with a focus on performance, scalability, and clean user experience.
+            </p>
+            <div class="hero-actions">
+                <a href="#services" class="btn-primary" data-i18n="heroServices">Explore services</a>
+                <a href="#portfolio" class="btn-secondary" data-i18n="heroPortfolio">View portfolio</a>
+            </div>
+            <div class="hero-badge" data-i18n="heroBadge">
+                Trusted by small & medium businesses in the region.
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="logo-stage">
+                <span class="logo-orbit logo-orbit-one" aria-hidden="true"></span>
+                <span class="logo-orbit logo-orbit-two" aria-hidden="true"></span>
+                <span class="logo-spark logo-spark-one" aria-hidden="true"></span>
+                <span class="logo-spark logo-spark-two" aria-hidden="true"></span>
+                <span class="logo-spark logo-spark-three" aria-hidden="true"></span>
+                <img class="logo-mark" src="Logo without BG.png" alt="EMA SOFT Logo" data-i18n-attr="alt:brandName">
+            </div>
+            <div class="tagline" data-i18n="heroTagline">
+                Technology-driven solutions with a focus on UI/UX and reliability.
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services">
+        <div class="section-header">
+            <h2 data-i18n="servicesTitle">Services</h2>
+            <p data-i18n="servicesIntro">Core solutions we provide to help your business grow.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🌐</div>
+                <div class="service-title" data-i18n="serviceWebTitle">Web Development</div>
+                <div class="service-desc" data-i18n="serviceWebDesc">
+                    Responsive, fast, and secure websites built with modern technologies.
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <div class="service-title" data-i18n="serviceMobileTitle">Mobile Apps</div>
+                <div class="service-desc" data-i18n="serviceMobileDesc">
+                    Cross-platform mobile applications with smooth user experience.
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <div class="service-title" data-i18n="serviceDesignTitle">UI/UX Design</div>
+                <div class="service-desc" data-i18n="serviceDesignDesc">
+                    Clean, intuitive interfaces focused on usability and clarity.
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">☁️</div>
+                <div class="service-title" data-i18n="serviceCloudTitle">Cloud Solutions</div>
+                <div class="service-desc" data-i18n="serviceCloudDesc">
+                    Scalable backend and cloud infrastructure for your applications.
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">⚙️</div>
+                <div class="service-title" data-i18n="serviceAutomationTitle">Automation</div>
+                <div class="service-desc" data-i18n="serviceAutomationDesc">
+                    Automating workflows to save time and reduce manual work.
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🛠️</div>
+                <div class="service-title" data-i18n="serviceSupportTitle">Technical Support</div>
+                <div class="service-desc" data-i18n="serviceSupportDesc">
+                    Ongoing maintenance, monitoring, and support for your systems.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="section" id="portfolio">
+        <div class="section-header">
+            <h2 data-i18n="portfolioTitle">Portfolio</h2>
+            <p data-i18n="portfolioIntro">Selected projects showcasing our capabilities.</p>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="project-card">
+                <div class="project-thumb"></div>
+                <div class="project-content">
+                    <div class="project-title" data-i18n="projectDashboard">Business Management Dashboard</div>
+                    <div class="project-tag" data-i18n="tagDashboard">Web App · Analytics</div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-thumb"></div>
+                <div class="project-content">
+                    <div class="project-title" data-i18n="projectCommerce">E-commerce Platform</div>
+                    <div class="project-tag" data-i18n="tagCommerce">Web · Payments</div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-thumb"></div>
+                <div class="project-content">
+                    <div class="project-title" data-i18n="projectBooking">Service Booking App</div>
+                    <div class="project-tag" data-i18n="tagBooking">Mobile · UI/UX</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+        <div class="section-header">
+            <h2 data-i18n="aboutTitle">About EMA SOFT</h2>
+            <p data-i18n="aboutIntro">Who we are and how we work.</p>
+        </div>
+
+        <div class="about-layout">
+            <div class="about-text">
+                <p data-i18n="aboutParagraphOne">
+                    EMA SOFT is a software company focused on delivering practical,
+                    well-designed digital solutions for businesses that want to grow
+                    and modernize their operations.
+                </p>
+                <p data-i18n="aboutParagraphTwo">
+                    We combine strong technical foundations with attention to UI/UX,
+                    ensuring that every product is not only powerful, but also easy
+                    and pleasant to use.
+                </p>
+                <p class="about-highlight" data-i18n="aboutHighlight">
+                    Our approach: understand the business, design the experience,
+                    build the technology, and support it long-term.
+                </p>
+            </div>
+
+            <div class="about-box">
+                <strong data-i18n="aboutWhy">Why clients choose us:</strong>
+                <ul>
+                    <li data-i18n="aboutReasonOne">Clear communication and transparent process</li>
+                    <li data-i18n="aboutReasonTwo">Focus on performance and reliability</li>
+                    <li data-i18n="aboutReasonThree">Tailored solutions, not generic templates</li>
+                    <li data-i18n="aboutReasonFour">Long-term partnership mindset</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Footer -->
+    <footer class="footer" id="contact">
+        <div>
+            <span data-i18n="copyright">© EMA SOFT – All rights reserved.</span>
+        </div>
+        <div class="footer-links">
+            <a href="mailto:info@emasoft.com">info@emasoft.com</a>
+            <a href="https://wa.me/971543745749" target="_blank" rel="noopener noreferrer" data-i18n="whatsappLink">WhatsApp</a>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button (من كودك) -->
+    <div class="whatsapp-container">
+        <button class="whatsapp-notice" id="whatsappNotice" type="button" data-i18n-attr="aria-label:whatsappNoticeLabel" aria-label="New message from EMA SOFT. Open WhatsApp chat." aria-controls="whatsappChat" aria-live="polite" hidden onclick="toggleWhatsApp()">
+            <span class="notice-dot" aria-hidden="true"></span>
+            <span class="notice-copy">
+                <strong data-i18n="whatsappNoticeTitle">New message from EMA SOFT</strong>
+                <span data-i18n="whatsappNoticeText">Hello there! How can we help?</span>
+            </span>
+        </button>
+        <button class="whatsapp-button" type="button" data-i18n-attr="aria-label:whatsappOpen" aria-label="Open WhatsApp chat" aria-controls="whatsappChat" aria-expanded="false" onclick="toggleWhatsApp()">
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+                <path d="M16.04 3C8.87 3 3.03 8.82 3.03 15.98c0 2.29.61 4.53 1.78 6.5L3 29l6.68-1.75a13.03 13.03 0 0 0 6.36 1.62h.01c7.17 0 13.01-5.83 13.02-13A12.9 12.9 0 0 0 25.25 6.6 12.9 12.9 0 0 0 16.04 3Zm.01 23.67h-.01a10.8 10.8 0 0 1-5.5-1.51l-.4-.24-3.96 1.04 1.06-3.86-.26-.42a10.8 10.8 0 0 1-1.66-5.7c0-5.94 4.83-10.77 10.78-10.77 2.88 0 5.59 1.13 7.63 3.17a10.7 10.7 0 0 1 3.15 7.63c0 5.94-4.84 10.77-10.78 10.77Zm5.91-8.07c-.32-.16-1.89-.93-2.18-1.04-.3-.11-.51-.16-.72.16-.22.32-.83 1.04-1.02 1.25-.19.22-.38.24-.7.08-.33-.16-1.37-.5-2.6-1.59-.96-.85-1.6-1.9-1.79-2.22-.19-.32-.02-.49.14-.65.15-.15.32-.38.49-.57.16-.19.21-.32.32-.54.11-.21.05-.4-.03-.57-.08-.16-.73-1.75-1-2.4-.26-.63-.53-.54-.73-.55h-.62c-.22 0-.57.08-.86.4-.3.32-1.13 1.1-1.13 2.7 0 1.59 1.16 3.13 1.32 3.35.16.21 2.28 3.48 5.52 4.88.77.33 1.37.53 1.84.68.77.24 1.47.21 2.02.13.62-.09 1.89-.77 2.16-1.51.27-.75.27-1.38.19-1.51-.08-.14-.3-.22-.62-.38Z"/>
+            </svg>
+            <span class="whatsapp-badge" id="whatsappBadge" aria-hidden="true">1</span>
+        </button>
+
+        <div class="whatsapp-chat" id="whatsappChat" hidden>
+            <div class="chat-header">
+                <img src="Logo without BG.png" class="chat-logo" alt="EMA Soft">
+                <div class="chat-heading">
+                    <h4 data-i18n="brandName">EMA SOFT</h4>
+                    <span data-i18n="chatReply">Typically replies within 1 hour</span>
+                </div>
+                <button class="chat-close" type="button" data-i18n-attr="aria-label:chatClose" aria-label="Close chat" onclick="toggleWhatsApp()">×</button>
+            </div>
+
+            <div class="chat-body">
+                <div class="chat-message">
+                    <strong data-i18n="brandName">EMA SOFT</strong>
+                    <span data-i18n="chatGreeting">Hello there! 👋</span><br>
+                    <span data-i18n="chatQuestion">How can we help?</span>
+                    <span class="chat-time" data-i18n="chatTime">Just now ✓✓</span>
+                </div>
+            </div>
+
+            <form class="chat-compose" onsubmit="sendWhatsAppMessage(event)">
+                <input id="whatsappMessage" type="text" data-i18n-attr="placeholder:chatPlaceholder;aria-label:chatPlaceholder" placeholder="Type a message..." aria-label="Type a message">
+                <button class="chat-send" type="submit" data-i18n-attr="aria-label:chatSend" aria-label="Send message">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- WhatsApp Script -->
+    <script src="site-translations.js"></script>
+    <script>
+        const translations = window.SITE_TRANSLATIONS;
+        let revealElements = [];
+        let revealListenersAttached = false;
+
+        const languageToggle = document.getElementById("languageToggle");
+        const themeToggle = document.getElementById("themeToggle");
+        const whatsappButton = document.querySelector(".whatsapp-button");
+        const whatsappBadge = document.getElementById("whatsappBadge");
+        const whatsappNotice = document.getElementById("whatsappNotice");
+        let whatsappHasBeenOpened = false;
+
+        function applyLanguage(language) {
+            const safeLanguage = language === "ar" ? "ar" : "en";
+            const isArabic = safeLanguage === "ar";
+            document.documentElement.lang = safeLanguage;
+            document.documentElement.dir = isArabic ? "rtl" : "ltr";
+            document.title = isArabic ? `${translations[safeLanguage].brandName} – حلول برمجية` : `${translations[safeLanguage].brandName} – Software Solutions`;
+
+            document.querySelectorAll("[data-i18n]").forEach(element => {
+                const translation = translations[safeLanguage][element.dataset.i18n];
+                if (translation) {
+                    element.textContent = translation;
+                }
+            });
+
+            document.querySelectorAll("[data-i18n-attr]").forEach(element => {
+                element.dataset.i18nAttr.split(";").forEach(attributeTranslation => {
+                    const [attribute, key] = attributeTranslation.split(":");
+                    const translation = translations[safeLanguage][key];
+                    if (attribute && translation) {
+                        element.setAttribute(attribute, translation);
+                    }
+                });
+            });
+
+            const currentTranslations = translations[safeLanguage];
+            whatsappButton.setAttribute("aria-label", currentTranslations[whatsappButton.getAttribute("aria-expanded") === "true" ? "chatClose" : "whatsappOpen"]);
+            languageToggle.textContent = isArabic ? "English" : "عربي";
+            languageToggle.setAttribute("aria-label", isArabic ? "التبديل إلى الإنجليزية" : "Switch to Arabic");
+            localStorage.setItem("ema-language", safeLanguage);
+        }
+
+        function applyTheme(theme) {
+            const safeTheme = theme === "light" ? "light" : "dark";
+            const isLight = safeTheme === "light";
+            document.documentElement.dataset.theme = safeTheme;
+            themeToggle.innerHTML = `<span aria-hidden="true">${isLight ? "🌙" : "☀️"}</span> <span>${translations[document.documentElement.lang][isLight ? "darkMode" : "lightMode"]}</span>`;
+            themeToggle.setAttribute("aria-label", translations[document.documentElement.lang][isLight ? "darkMode" : "lightMode"]);
+            localStorage.setItem("ema-theme", safeTheme);
+        }
+
+        languageToggle.addEventListener("click", () => {
+            applyLanguage(document.documentElement.lang === "ar" ? "en" : "ar");
+            applyTheme(document.documentElement.dataset.theme);
+        });
+
+        themeToggle.addEventListener("click", () => {
+            applyTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+        });
+
+        applyLanguage(localStorage.getItem("ema-language") || "en");
+        applyTheme(localStorage.getItem("ema-theme") || "dark");
+
+        function setupScrollReveal() {
+            revealElements = [...document.querySelectorAll(".hero-text, .hero-visual, .section-header, .service-card, .project-card, .about-text, .about-box")];
+            const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            if (prefersReducedMotion) {
+                revealElements.forEach(element => element.classList.add("reveal", "is-visible"));
+                return;
+            }
+
+            let cardIndex = 0;
+            revealElements.forEach(element => {
+                element.classList.add("reveal");
+                if (element.matches(".service-card, .project-card")) {
+                    element.style.setProperty("--reveal-delay", `${(cardIndex % 4) * 90}ms`);
+                    cardIndex += 1;
+                }
+            });
+
+            const revealVisibleElements = () => {
+                revealElements.forEach(element => {
+                    if (element.classList.contains("is-visible")) {
+                        return;
+                    }
+
+                    const bounds = element.getBoundingClientRect();
+                    if (bounds.top < window.innerHeight - 35 && bounds.bottom > 0) {
+                        element.classList.add("is-visible");
+                    }
+                });
+            };
+
+            if (!revealListenersAttached) {
+                window.addEventListener("scroll", revealVisibleElements, { passive: true });
+                window.addEventListener("resize", revealVisibleElements);
+                window.addEventListener("load", revealVisibleElements, { once: true });
+                revealListenersAttached = true;
+            }
+            revealVisibleElements();
+        }
+
+        setupScrollReveal();
+
+        window.setTimeout(() => {
+            if (!whatsappHasBeenOpened) {
+                whatsappNotice.hidden = false;
+            }
+        }, 2200);
+
+        function toggleWhatsApp() {
+            const chat = document.getElementById("whatsappChat");
+            const isOpen = !chat.hidden;
+            chat.hidden = isOpen;
+            whatsappHasBeenOpened = true;
+            whatsappNotice.hidden = true;
+            whatsappBadge.hidden = true;
+            whatsappButton.classList.toggle("is-open", !isOpen);
+            whatsappButton.setAttribute("aria-expanded", String(!isOpen));
+            whatsappButton.setAttribute("aria-label", translations[document.documentElement.lang][isOpen ? "whatsappOpen" : "chatClose"]);
+        }
+
+        function sendWhatsAppMessage(event) {
+            event.preventDefault();
+            const message = document.getElementById("whatsappMessage").value.trim();
+            const url = "https://wa.me/971543745749" + (message ? "?text=" + encodeURIComponent(message) : "");
+            window.open(url, "_blank", "noopener,noreferrer");
+        }
+    </script>
+
+</body>
+</html>
