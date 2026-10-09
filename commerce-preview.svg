@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#111a30"/>
+      <stop offset="1" stop-color="#050814"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#ffd04a"/>
+      <stop offset="1" stop-color="#f7b500"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="720" rx="32" fill="url(#bg)"/>
+  <rect x="25" y="25" width="1150" height="670" rx="24" fill="#0b1022" stroke="#f7b500" stroke-opacity=".28"/>
+  <rect x="25" y="25" width="1150" height="76" rx="24" fill="#111a30"/>
+  <circle cx="75" cy="63" r="22" fill="url(#gold)"/>
+  <text x="112" y="72" fill="#fff" font-family="Arial,sans-serif" font-size="25" font-weight="700">EMA MARKET</text>
+  <rect x="650" y="43" width="280" height="38" rx="19" fill="#0b1022" stroke="#b0b7c3" stroke-opacity=".3"/>
+  <text x="675" y="68" fill="#b0b7c3" font-family="Arial,sans-serif" font-size="15">Search products...</text>
+  <circle cx="1080" cy="62" r="19" fill="#f7b500" fill-opacity=".18" stroke="#f7b500"/>
+  <path d="M1072 57h4l3 11h12l3-8h-16M1081 74h.1M1091 74h.1" fill="none" stroke="#f7b500" stroke-width="2" stroke-linecap="round"/>
+  <text x="65" y="150" fill="#fff" font-family="Arial,sans-serif" font-size="30" font-weight="700">Featured collection</text>
+  <text x="65" y="185" fill="#b0b7c3" font-family="Arial,sans-serif" font-size="17">Discover products selected for you</text>
+  <g>
+    <rect x="65" y="220" width="335" height="405" rx="18" fill="#111a30" stroke="#f7b500" stroke-opacity=".22"/>
+    <rect x="432" y="220" width="335" height="405" rx="18" fill="#111a30" stroke="#f7b500" stroke-opacity=".22"/>
+    <rect x="799" y="220" width="335" height="405" rx="18" fill="#111a30" stroke="#f7b500" stroke-opacity=".22"/>
+    <rect x="85" y="240" width="295" height="230" rx="12" fill="#1b2a4a"/>
+    <rect x="452" y="240" width="295" height="230" rx="12" fill="#1b2a4a"/>
+    <rect x="819" y="240" width="295" height="230" rx="12" fill="#1b2a4a"/>
+    <path d="M180 420 235 300l55 120Z" fill="#f7b500" fill-opacity=".8"/><circle cx="235" cy="325" r="45" fill="#ffd04a" fill-opacity=".45"/>
+    <path d="M540 430c15-125 100-125 120 0Z" fill="#f7b500" fill-opacity=".78"/><circle cx="600" cy="325" r="45" fill="#263d68"/>
+    <rect x="905" y="300" width="120" height="125" rx="28" fill="#f7b500" fill-opacity=".75"/><path d="M925 300c0-42 80-42 80 0" fill="none" stroke="#ffd04a" stroke-width="12"/>
+    <g fill="#fff" font-family="Arial,sans-serif" font-size="18" font-weight="700">
+      <text x="90" y="515">Everyday essentials</text><text x="457" y="515">Modern collection</text><text x="824" y="515">Seasonal favorites</text>
+    </g>
+    <g fill="#b0b7c3" font-family="Arial,sans-serif" font-size="16"><text x="90" y="548">Quality made simple</text><text x="457" y="548">Designed for your life</text><text x="824" y="548">A little something extra</text></g>
+    <g fill="#f7b500" font-family="Arial,sans-serif" font-size="18" font-weight="700"><text x="90" y="590">$29.00</text><text x="457" y="590">$45.00</text><text x="824" y="590">$36.00</text></g>
+    <g fill="#f7b500"><circle cx="345" cy="583" r="18"/><circle cx="712" cy="583" r="18"/><circle cx="1079" cy="583" r="18"/></g>
+    <g fill="#111" font-family="Arial,sans-serif" font-size="22" font-weight="700"><text x="339" y="591">+</text><text x="706" y="591">+</text><text x="1073" y="591">+</text></g>
+  </g>
+</svg>
