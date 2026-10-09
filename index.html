@@ -377,12 +377,7 @@
             position: relative;
             z-index: 1;
             width: min(100%, 480px);
-            height: 390px;
             margin: 48px auto 0;
-            overflow: hidden;
-            border-radius: 28px 28px 0 0;
-            background: var(--surface);
-            box-shadow: 0 -10px 40px rgba(0, 0, 0, .18);
             perspective: 1000px;
             transform-style: preserve-3d;
             animation: showcase-image-float 6s ease-in-out infinite;
@@ -393,8 +388,6 @@
             width: 100%;
             height: auto;
             margin: 0 auto;
-            object-fit: contain;
-            object-position: top center;
             filter: drop-shadow(0 18px 24px rgba(0, 0, 0, .2));
             transform: translateZ(24px) rotateX(3deg) rotateY(-6deg);
             transform-origin: 50% 38%;
@@ -1324,7 +1317,6 @@
             }
             .showcase-image-wrap {
                 width: min(88%, 360px);
-                height: 300px;
                 margin-top: 36px;
             }
             .process-grid {
