@@ -1,0 +1,12 @@
+{
+  "name": "ema-soft-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "EMA SOFT public website and SQLite-powered content dashboard",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  }
+}
